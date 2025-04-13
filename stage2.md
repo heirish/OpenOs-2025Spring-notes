@@ -24,3 +24,4 @@
   sudo npm install hexo --save
   hexo n OpenOs-2025Spring-heirish
   ```
+  - 注意：虚拟机中不能存放到与host windows共享的目录下，要放到虚似机系统本身的目录。因为与host windows共享的目录是不能创建软链接的， 否则安装hexo时会报错
