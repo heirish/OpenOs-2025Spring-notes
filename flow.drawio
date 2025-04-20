@@ -1,0 +1,76 @@
+<mxfile host="Electron" modified="2025-04-19T13:31:55.525Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="2Rv8byXXcAu7miH6Id14" version="24.1.0" type="device">
+  <diagram name="第 1 页" id="08hsS0CYBdLucR93m8tl">
+    <mxGraphModel dx="2487" dy="1384" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3wXcCNMswuUDBOQorGlN-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-1" target="3wXcCNMswuUDBOQorGlN-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-1" value="check and prep rust env" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-317.5" y="124" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-2" target="3wXcCNMswuUDBOQorGlN-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-2" value="cd os&amp;amp;&amp;amp;make run" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-291" y="13" width="67" height="67" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-3" target="3wXcCNMswuUDBOQorGlN-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-3" value="make -C ../user build TEST=$(TEST) CHAPTER=$(CHAPTER) BASE=$(BASE)" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="241.5" y="228" width="235" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-4" target="3wXcCNMswuUDBOQorGlN-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-4" value="cargo clean&lt;div&gt;rm -rf build&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="299" y="335" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-5" value="" style="line;strokeWidth=4;direction=south;html=1;perimeter=backbonePerimeter;points=[];outlineConnect=0;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="-4" y="-106" width="10" height="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-6" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;os&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-69" y="-94" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-7" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;usr&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="6" y="-94" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-8" target="3wXcCNMswuUDBOQorGlN-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-8" value="mkdir -p build/bin&lt;div&gt;mkdir -p build/elf&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;&lt;div&gt;cp&amp;nbsp; src/bin/ch&amp;lt;n&amp;gt;*.rs build/app&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="257" y="438" width="204" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-9" target="3wXcCNMswuUDBOQorGlN-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-9" value="python3 build.py(cargo rustc --bin &amp;lt;app&amp;gt; --release -- -Clink-args=-Ttext=&amp;lt;base_addr&amp;gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;div&gt;rust-objcopy --binary-architecture=riscv64 \&lt;/div&gt;&lt;div&gt;target/release/riscv64gc-unknown-none-elf/release/&amp;lt;app_name&amp;gt; \&lt;/div&gt;&lt;div&gt;--strip-all -O binary target/release/riscv64gc-unknown-none-elf/release/&amp;lt;app_name&amp;gt;.bin;&lt;/div&gt;&lt;div&gt;cp target/release/riscv64gc-unknown-none-elf/release/&amp;lt;app_name&amp;gt; \&lt;/div&gt;&lt;div&gt;target/release/riscv64gc-unknown-none-elf/release/&amp;lt;app_name&amp;gt;.elf&lt;/div&gt;&lt;div&gt;cp&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;target/release/riscv64gc-unknown-none-elf/release/&amp;lt;app_name&amp;gt;.bin build/bin&lt;/span&gt;&lt;/div&gt;&lt;div&gt;cp&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;target/release/riscv64gc-unknown-none-elf/release/&amp;lt;app_name&amp;gt;.elf build/elf&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="101" y="546" width="516" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-10" target="3wXcCNMswuUDBOQorGlN-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-10" value="build and run build.rs to generate os/src/link_app.S according to files in src/build/bin" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-380" y="729" width="241" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-11" target="3wXcCNMswuUDBOQorGlN-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-11" value="cargo build --release" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-326.5" y="818" width="134" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3wXcCNMswuUDBOQorGlN-12" target="3wXcCNMswuUDBOQorGlN-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-12" value="rust-objcopy --binary-architecture=riscv64 target/$(TARGET)/$(MODE)/os --strip-all -O binary target/$(TARGET)/$(MODE)/os.bin" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-414" y="906" width="309" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="3wXcCNMswuUDBOQorGlN-13" value="&lt;div&gt;qemu-system-riscv64 \&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&#x9;&lt;/span&gt;-machine virt \&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&#x9;&lt;/span&gt;-nographic \&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&#x9;&lt;/span&gt;-bios ../bootloader/qemu-rustsbi.bin \&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: normal;&quot;&gt;&lt;span style=&quot;white-space:pre&quot;&gt;&#x9;&#x9;&lt;/span&gt;-device loader,file=target/$(TARGET)/$(MODE)/os,addr=0x80200000&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-437" y="1016" width="355" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
