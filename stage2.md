@@ -52,7 +52,7 @@
        ```
      - 查看了作业仓库2025s-rcore-heirish与导学阶段时的rcore仓库rCore-Tutorial-v3里的Dockerfile,发现也不一样。
      - 最后重新进入作业仓库，再重新builder docker,解决问题
-### 2025.04.17 ~ 2025.04.20
+### 2025.04.17 ~ 2025.04.20 ch2
 - 学习第二节课录频及rcore-tutorial-guide-2025s第二章(录频音画不同步基本听不太懂，主要自己看slides和tutorial)
   - 批处理系统 (Batch System):出现于计算资源匮乏的年代，其核心思想是： 将多个程序打包到一起输入计算机；当一个程序运行结束后，计算机会 自动 执行下一个程序。
   - 应用程序难免会出错，如果一个程序的错误导致整个操作系统都无法运行，那就太糟糕了。 保护 操作系统不受出错程序破坏的机制被称为 特权级 (Privilege) 机制， 它实现了用户态和内核态的隔离。
@@ -98,3 +98,33 @@
 - 问题
   - 由于是在docker中跑的实验， 并且项目的Cargo.toml中有指定target, 在host pc上打开项目后rust-analyzer报错。只能在虚拟机中按实验仓库的脚本配置rust环境, 然后vscode通过remote ssh连接到虚拟机(好像可以直接vscode连接到virtualbox中的docker?后面再研究)
   - 编译时报错" linking with `rust-lld` failed: exit status: 1", 并且git branch时会报错"fatal:detected dubious ownership in reprository...", 按提示执行`git config --global --add safe.directory <dir>`, 然后再重新编译即可
+### 2025.04.20 ch3
+- 学习第二节课录频及rcore-tutorial-guide-2025s第二章(录频音画不同步基本听不太懂，主要自己看slides和tutorial)
+  - 代码仓库:
+    - 相比于ch2, ch3的user/app的entry point address有变化(build.py)，由固定的0x80400000变成了0x80400000+0x2000*i(i为app index), 也就是说一个app最大size为0x20000
+    - 相比于ch2一次加载一个app到内存，ch3在启动时一次性将所有app加载到内存(0x80400000+0x20000*i), 通过src/loader.rs实现
+    - 与ch2相比，ch3多了app之间的同级(User态)切换，在task模块中实现
+    - 与ch2相比，ch3多了task调度系统，在timer.rs和trap_handler的Trap::Interrupt(Interrupt::SupervisorTimer) 分支实现 
+- Notes
+  - 分时多任务系统，它能并发地执行多个用户程序，并调度这些程序。为此需要实现
+    - 一次性加载所有用户程序，减少任务切换开销；
+    - 支持任务切换机制，保存切换前后程序上下文；
+    - 支持程序主动放弃处理器，实现 yield 系统调用；
+    - 以时间片轮转算法调度用户程序，实现资源的时分复用。
+- 遇到的問題
+  - 每次新進docker后執行cargo命令時都會同步"info: syncing channel updates for", 并且下載時很慢。進docker之后執行下面兩句設置環境變量. TODO:在啟動docker時自動設置？
+    ```
+    export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+    ```
+  - 代碼修改后，`make run BASE=0`和`make run BASE=1`都能通過。但是執行`make run BASE=2`通不過，在get_time時返回的值始終為0. 并且在ch3_trace.rs中的第一個測試count_syscall(SYSCALL_GETTIMEOFDAY)返回的值很大。
+    - 剛開始懷穎是實現的sys_trace系統調用有問題，檢查幾遍后也沒找到異常
+    - 休息一會后，想了下出問題的現象，可能是棧出問題了。回想在os/entry.asm中有設置內核棧大小。而我實現的task_syscalls會導致struct TaskManager增大64k(MAX_APP_NUM * MAX_SYSCALL_ID * sizeof(usize) = 16 * 512 * 8byte = 16 * 4k). 看了下原來的棧大小設置成了64k, 也就是只是我添加的這部分就把目前的棧空間占完了。增加kernel stack大小后test通過。修改如下
+    ```
+    boot_stack_lower_bound:
+        # .space 4096 * 16 
+        .space 4096 * 32 # after added task_syscalls to tasksControlBlock, TaskManager will increase MAX_APP_NUM * MAX_SYSCALL_ID * sizeof(usize) = 16 * 512 * 8byte = 16 * 4k = 64k
+        .globl boot_stack_top
+    boot_stack_top:
+    ```  
+    - 沒有按目前只有的5個syscall去設計task_syscalls大小，而是按更大的值512(>最大的syscall_id:410)設計數組長度, 只是為了簡化代碼。
