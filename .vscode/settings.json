@@ -1,0 +1,87 @@
+//在存放markdown文件的根目录下创建.vscode目录，然后将本文件放到.vscode目录下
+//下次用vscode打开根目录时会自动应用"Solarized Light"主题，同时自定义修改的颜色也会生效
+//默认主题可选其它，如"Modern Dark", 从而实现默认打开为写代码主题，打开笔记目录时则为customized的"Solarized Light"主题 
+{
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorCustomizations": {
+        "[Solarized Light]": {
+            "activityBarBadge.background": "#B9E5BE",
+            "editorGroup.emptyBackground": "#B9E5BE",
+            "editorWidget.background": "#B9E5BE",
+            "editor.background": "#d4ecd6",
+            "editorWidget.border": "#00772e",
+            "editorIndentGuide.background1": "#00772e",
+            "editorIndentGuide.activeBackground1": "#b43939",
+            "editorGroupHeader.tabsBackground": "#75A681",
+            "editor.lineHighlightBackground": "#e2f1bf",
+            "sideBar.background": "#CCE8CF",
+            "sideBar.border": "#00772e",
+            "activityBar.background": "#75A681",
+            "activityBar.foreground": "#000000",
+            "activityBar.border": "#00772e",
+            "tab.hoverBackground": "#7FD181",
+            "tab.inactiveForeground": "#000000",
+            "tab.inactiveBackground": "#CCE8CF",
+            "tab.activeBorder": "#75A681",
+            "tab.activeBackground": "#7FD181",
+            "tab.activeBorderTop": "#fff",
+            "tab.border": "#75A681",
+            "editorGroupHeader.tabsBorder": "#75A681",
+            "editorGutter.background": "#b9e5be",
+            "editorLineNumber.foreground": "#00772e",
+            "breadcrumb.background": "#b9e5be",
+            "breadcrumb.foreground": "#00772e",
+
+            "statusBar.background": "#215732",
+            "statusBar.foreground": "#e7e7e7",
+            "statusBarItem.hoverBackground": "#2f7c47",
+            "statusBarItem.remoteBackground": "#215732",
+            "statusBarItem.remoteForeground": "#e7e7e7",
+            "titleBar.activeBackground": "#215732",
+            "titleBar.activeForeground": "#e7e7e7",
+            "titleBar.inactiveBackground": "#21573299",
+            "titleBar.inactiveForeground": "#e7e7e799"
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Solarized Light]": {
+            "comments": "#287ea5da",
+            "strings": "#005c23",
+            "keywords": "#721111",
+            "functions": "#B30000",
+            "textMateRules": [
+                {
+                    "name": "Variable",
+                    "scope": [
+                        "variable.language",
+                        "variable.other"
+                    ],
+                    "settings": {
+                        "foreground": "#000000"
+                    }
+                },
+                {
+                    "name": "Variable start",
+                    "scope": "punctuation.definition.variable",
+                    "settings": {
+                        "foreground": "#a7001c"
+                    }
+                },
+                {
+                    "name": "Function name",
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#000872"
+                    }
+                },
+                {
+                    "name": "Keyword",
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#09168b"
+                    }
+                },
+            ]
+        }
+    }
+}
