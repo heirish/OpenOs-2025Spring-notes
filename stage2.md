@@ -112,7 +112,7 @@
     - 支持程序主动放弃处理器，实现 yield 系统调用；
     - 以时间片轮转算法调度用户程序，实现资源的时分复用。
 - 遇到的問題
-  - 每次新進docker后執行cargo命令時都會同步"info: syncing channel updates for", 并且下載時很慢。進docker之后執行下面兩句設置環境變量. TODO:在啟動docker時自動設置？
+  - 每次新進docker后執行cargo命令時都會同步"info: syncing channel updates for", 并且下載時很慢。進docker之后執行下面兩句設置環境變量. ~~TODO:在啟動docker時自動設置？~~, 己将这两个环境变量添加到[Dockerfile](./Dockerfile)中
     ```
     export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
     export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
