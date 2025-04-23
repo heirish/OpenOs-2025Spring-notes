@@ -19,6 +19,12 @@ rustup target list --installed
 ```
 ### 其它
 ```
+#创建ssh key
+ssh-keygen -t rsa -b 4096 -C "你的邮箱"
+
+#给root用户设置密码
+sudo passwd root
+
 #查看gcc默认的链接脚本
 ld -verbose
 
