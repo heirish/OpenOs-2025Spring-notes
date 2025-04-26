@@ -182,3 +182,9 @@
   ![](images/rcore-twopt.png)
   ![](images/rcore-twopt-user.png)
 - 问题:虚拟机挂了，重新配环境:-(
+### 2025.04.26 ch5
+- 根据tutorial自学ch5并完成實驗提交
+- Notes
+    - 按键 Ctrl+A 再输入 X 来退出qemu模拟器
+### 2025.04.27 ch6
+- 学习教学录频以及rcore-tutorial对应章节

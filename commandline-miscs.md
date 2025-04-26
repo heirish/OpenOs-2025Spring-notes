@@ -19,6 +19,8 @@ rustup target list --installed
 ```
 ### 其它
 ```
+按键 Ctrl+A 再输入 X 来退出qemu模拟器 
+
 #创建ssh key
 ssh-keygen -t rsa -b 4096 -C "你的邮箱"
 
