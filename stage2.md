@@ -188,3 +188,32 @@
     - 按键 Ctrl+A 再输入 X 来退出qemu模拟器
 ### 2025.04.27 ch6
 - 学习教学录频以及rcore-tutorial对应章节
+- notes
+  - 什么是文件系统?
+    ![](images/file-system.png)
+    ![](images/file-system1.png)
+  - 什么是文件?
+    ![](images/file.png)
+  - 文件系统需求
+    ![](images/fs-req.png)
+    - 文件系统实现需解决以下两个问题
+      - 问题一: 如何来描述一个文件，如何来记录文件的各种管理信息？
+        - 文件控制块:基本信息，访问控制信息，使用信息
+        - 文件描述符
+          ![](images/fcb-fd.png)
+      - 如何来存放文件，即如何为文件中各个连续的逻辑块分配磁盘中的空闲物理块？如何来记录逻辑块与物理块之间的映射关系？
+  - 文件描述符
+    ![](images/file-descriptor.png)
+  - opened file list
+    ![](images/opened-file-list.png)
+  - 文件系统设计与实现
+    - 为解决问题一
+      ![](images/file-system-p1.png)
+
+      ![](images/file-system-p2.png)
+
+      ![](images/fs-view.png)
+
+      ![](images/vfs.png)
+    - 为解决问题二
+      ![](images/fs-storage-arch.png)
