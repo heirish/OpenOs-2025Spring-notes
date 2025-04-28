@@ -186,7 +186,7 @@
 - 根据tutorial自学ch5并完成實驗提交
 - Notes
     - 按键 Ctrl+A 再输入 X 来退出qemu模拟器
-### 2025.04.27 ch6
+### 2025.04.27-2015.04.28 ch6
 - 学习教学录频以及rcore-tutorial对应章节
 - notes
   - 什么是文件系统?
@@ -217,3 +217,7 @@
       ![](images/vfs.png)
     - 为解决问题二
       ![](images/fs-storage-arch.png)
+- 完成练习， 2025.04.28
+  - 画uml图对理解代码和整个框架很有用
+  - 在vfs中的死锁问题耽误了些时间
+  - 目前mmap, munmap实现比较丑陋，看有时间来得及的话能不能改一下
