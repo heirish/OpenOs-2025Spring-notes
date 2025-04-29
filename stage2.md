@@ -217,7 +217,34 @@
       ![](images/vfs.png)
     - 为解决问题二
       ![](images/fs-storage-arch.png)
+      - superblock
+      - 文件控制块inode:代码中存目录文件列表(DirEntry)的DiskInode
+      - bitmap
+      - 数据块: 代码中存文  件数据的DiskInode
+      - 目录项(DirEntry)
+      - 文件物理结构对比
+        - 连续文件
+          - 优点是不需要额外的空间开销，只要在文件目录中指出文件的大小和首块的块号即可，顺序和随机访问效率都很高
+          - 缺点是动态地增长和缩小系统开销很大；文件创建时要求用户提供文件的大小；存储空间浪费较大
+        - 串联文件
+          - 克服了连续文件的不足之处，但文件随机访问的系统开销较大
+          - 适合于顺序访问
+        - 索引文件
+          - 既适合于顺序存访问，也适合于随机访问
+          - 是一种比较好的文件物理结构
+          - 但索引表需额外空间与时间开销
+          - UNIX系统是使用索引结构的典型例子
+  - 文件访问过程示例:读写/tmp/hello
+    ![](images/fs-ex.png)
+  - 文件系统分区
+    ![](images/fs-group.png)
+  - symbolic link vs. hard link
+    ![](images.file-link.png)
 - 完成练习， 2025.04.28
+  - ch6课件和讲解很优秀，课件很多图对理解文件系统非常有帮助
   - 画uml图对理解代码和整个框架很有用
   - 在vfs中的死锁问题耽误了些时间
   - 目前mmap, munmap实现比较丑陋，看有时间来得及的话能不能改一下
+### 2025.4.29
+- 自学ch7
+- 学习ch8 tutorial, 画process, thread, sync相关的mul
