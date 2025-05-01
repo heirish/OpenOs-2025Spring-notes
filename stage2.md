@@ -22,7 +22,7 @@
   cd blog
   sudo npm install hexo-cli -g 
   sudo npm install hexo --save
-  hexo n OpenOs-2025Spring-heirish
+  hexo n 2025春夏操作系统训练营第一阶段总结-heirish
   ```
   - 注意：虚拟机中不能存放到与host windows共享的目录下，要放到虚似机系统本身的目录。因为与host windows共享的目录是不能创建软链接的， 否则安装hexo时会报错
 
@@ -250,3 +250,4 @@
 - 学习ch8 tutorial, 画process, thread, sync相关的UML图
 ### 2025.04.30 ~ 2025.05.01
 - 完成ch8作业。中间花了比较长时间理解银行家算法， 学习了去年秋季的的教学视频和文档，最后理解了完成作业。
+- 银行家算法，B站的这个也讲得不错: https://www.bilibili.com/video/BV19h411J7ef/?spm_id_from=333.337.search-card.all.click&vd_source=601dbc960255506eb5f6390166996d67
