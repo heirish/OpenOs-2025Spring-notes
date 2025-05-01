@@ -246,5 +246,7 @@
   - 在vfs中的死锁问题耽误了些时间
   - 目前mmap, munmap实现比较丑陋，看有时间来得及的话能不能改一下
 ### 2025.4.29
-- 自学ch7
-- 学习ch8 tutorial, 画process, thread, sync相关的mul
+- 学习ch7 tutorial
+- 学习ch8 tutorial, 画process, thread, sync相关的UML图
+### 2025.04.30 ~ 2025.05.01
+- 完成ch8作业。中间花了比较长时间理解银行家算法， 学习了去年秋季的的教学视频和文档，最后理解了完成作业。
