@@ -81,23 +81,32 @@
     }
     ```
   - globalallocator struct己定义，要使vec,string等可用，globalallocator必须实现trait GlobalAlloc并使用`#[cfg_attr(all(target_os = "none", not(test)), global_allocator)]`定义collections默认使用的global_allocator,refer:https://docs.rust-embedded.org/book/collections/
-### 2025.05.08 unikernel基础与框架 内存映射
+### 2025.05.08 - 2025.05.09 unikernel基础与框架 内存映射
+#### 理解这一章的关键
+- 哪些是硬件MMU支持的，哪些是需要软件层面提供的
+
+| 操作 | 硬件（MMU）职责 | 软件（OS）职责 |
+| -- | -- | --|
+|申请内存|地址转换、TLB缓存、触发缺页异常 |	分配物理页、设置页表、处理异常、刷新TLB
+|释放内存|	检测无效PTE并触发异常|清除PTE、回收物理内存、刷新TLB
+- SV39中的大页(Super Page):
+```
+RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/X 不全为 0 就会直接从当前的页表项中取出物理页号，再接上页内偏移，就完成最终的地址转换。注意这个过程可以发生在多级页表的任意一级。
+- 在 SV39 中，如果使用了一级页索引就停下来，则它可以涵盖虚拟页号的高9位为某一固定值的所有虚拟地址，对应于一个1G的大页；
+- 如果使用了二级页索引就停下来，则它可以涵盖虚拟页号的高18位为某一固定值的所有虚拟地址，对应于一个2M的大页。
+- 以同样的视角，如果使用了所有三级页索引才停下来，它可以涵盖虚拟页号的高27位为某一个固定值的所有虚拟地址，自然也就对应于一个大小为4kB的虚拟页面 
+```
+- 物理内存的可用范围是_ekernel到指定的最大物理地址的左闭右开的区间[_ekernel, phyaddr_end)
+- 因为是unikernel, 所以是一次性将所有可用物理内存地址范围axhal::mem::default_free_regions全部一次性通过axruntime::AddrSpace::map_linear直接映射成虚地址范围并写入PTE的, 后续GlobalAllocator就直接操作映射后的虚地址范围，初始的flags: MemRegionFlags::FREE | MemRegionFlags::READ | MemRegionFlags::WRITE, 映射时会将MemRegionFlags::FREE忽略, 然后加上PTE::V,在crate page_table_entry中处理的
 ![](images/arcos-mem0.png)
 ![](images/arcos-mem1.png)
 ![](images/arcos-mem.png)
 ![](images/arcos-mem2.png)
-- 第一阶段:
+- 第一阶段:直接写了两个一级PTE，形成两个1G的大页
     - arceos/modules/axhal/src/platform/riscv64_qemu_virt/boot.rs 
     - 映射到的物理地址为0x8000_0000~0xC000_0000, 物理页page size为4K(2^12), 因此这个物理地址对应PPN为0x80000 ~ 0xC0000
     - 所有的常量定义都在arceos/platforms/riscv64-qemu-virt.toml中，但是怎么最终在编译时用到的?
       > 在arceos/modules/axconfig/build.rs中读取上面这个toml文件，并生成config.rs的，生成的文件在target/riscv64gc-unknown-none-elf/release/build/axconfig-ae9a66e9535d7184/out/config.rs
-      ```
-      /// Base virtual address of the kernel image.
-      pub const KERNEL_BASE_VADDR: usize = 0xffff_ffc0_8020_0000;
-      /// Linear mapping offset, for quick conversions between physical and virtual
-      /// addresses.
-      pub const PHYS_VIRT_OFFSET: usize = 0xffff_ffc0_0000_0000;
-      ```
     - boot时，只有一级页表BOOT_PT_SV39, 512个PTE， 每个PTE直接映射到1G的物理block
       ```
       #[link_section = ".data.boot_page_table"]
@@ -119,10 +128,9 @@
     - pte_index = vaddr/1G后保留最后9位,即取30~38位, 2^9 = 512
     - pte_index for vaddr 0x8000_0000: 第30~38位结果为0x2 
     - pte_index for vaddr 0xffff_ffc0_8000_0000: 第30~38位为0x102(100_0000_10)
-    - **问题：只看到这里做了boot_page_table的初始化,什么时候用的呢?怎么通过虑拟地址访问到物理地址的?**
-          > 只在arceos/modules/axhal/src/arch/riscv/mod.rs看到有读satp中的PPN，但是唯一用到它的地方是用来重新写PPN到satp,只是判断当前的PPN与将要写入的是否是一样的地址。 
 - 第二阶段:arceos/modules/axruntime/src/lib.rs -> arceos/modules/axmm/src/lib.rs
-- 练习arceos/tour/u_3_0/src/main.rs里只是通过phys_to_virt将pflash的物理地址通过加一个offset转成了虚地址（0x2200_0000 + 0xffff_ffc0_0000_0000 = 0xFFFFFFC022000000).
+- 代码中物理地址与虚地址的转换是直接通过加减offset简单实现的
+- 代码指令读写地址时还是通过MMU查找PT
 - tour/u_3_0的cargo.toml中不加paging feature,会报错
   ```
   Try to access dev region [0xFFFFFFC022000000], got [  0.134963 0 axhal::arch::riscv::trap:24] No registered handler for trap PAGE_FAULT
@@ -135,5 +143,10 @@
   ry to access dev region [0xFFFFFFC022000000], got 0x646C6670
   Got pflash magic: pfld
   ```
-  是因为virtaddr 0xFFFFFFC022000000并没有做映射
-- 还是要仔细读一下https://oslearning365.github.io/arceos-tutorial-book, 比课程视频讲得更详细
+  是因为没开启第二阶段的paging时，不会对mmio段的物理内存作map_region,因此通过虚地址0xFFFFFFC022000000访问时会产生pagefault进入trap流程，在hal::arch::risv::trap.rs的riscv_trap_handler中处理
+- 可以通过`make run LOG=trace A=tour/u_3_0`打开trace日志查看更多调试信息，里面包含有map_region的日志
+- 先初始化globalallocator,再初始化memory-management(其中会去创建虚拟内存地址空间，做region_mapping),分配的第一个内存是一个page，用于PT的第一级
+  ```
+  axruntime::init_allocator -> axalloc::global_init
+  axmm::init_memory-management -> axmm::new_kernel_space() -> axmm::AddrSpace::new_empty() -> page_table_multiarch::riscv::Sv39PageTable<PagingHandlerImpl>::try_new() -> page_table_multiarch::riscv::Sv39PageTable<PagingHandlerImpl>::alloc_table() -> PagingHandlerImpl::alloc_frame() -> global_alloctor().alloc_pages(1,PAGE_SIZE_4K)
+  ```
