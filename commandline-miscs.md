@@ -44,4 +44,7 @@ gcc hello_world.o -lc -o  hello_world
 readelf -a target/riscv64gc-unknown-none-elf/debug/os | less
 
 rust-objdump -S target/riscv64gc-unknown-none-elf/debug/os
+
+###忽略倉庫中僅修改文件權限的文件
+git config core.filemode false
 ```

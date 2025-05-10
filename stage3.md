@@ -152,3 +152,17 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
   ```
 - 完成exercise 3: bump allocator
   - 参考了现有的allocator中的写法,key points:1.四个位置指针，2. allocate时的alignment处理和overlap检查, 3.由于是连续的分配，目前不支持dealloc，足以通过ci了
+### 2025.05.10 unikernel基础与框架 多任务并发
+![](images/arceos-multitask.png)
+![](images/arceos-multitask-systemtasks.png)
+![](images/arceos-multitask-contextswitch.png)
+![](images/arceos-multitask-contextswitch1.png)
+### 2025.05.10 unikernel基础与框架 任务调度框架
+- 协作式(主动让出)调度与抢占式调度
+- 协作式调度算法：FIFO
+- 抢占式调度算法:rr,cfs
+![](images/arceos-scheduler.png)  
+![](images/arceos-scheduler1.png)
+- arceos中的irq开启位置: APP:axstd["sched_cfs"] -> axstd:axfeat["sched_cfs"] -> axfeat中的sched_fs声明`sched_cfs = ["axtask/sched_cfs", "irq"]`,因此只要在APP中声明了feature shced_cfs,根据依赖关系，会在axfeat中开启irq feature
+### 2025.05.10 unikernel基础与框架 块设备與文件系統 
+- 在執行docker run時添加上`--privileged`選項，否則在`mount disk.img ./mnt`時會報錯"no such file or directory", 使tour/u_8_0的執行失敗。
