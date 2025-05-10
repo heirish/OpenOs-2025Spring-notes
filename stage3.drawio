@@ -1,0 +1,70 @@
+<mxfile host="Electron" modified="2025-05-10T08:16:26.576Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="B3T2YgximIkP9tYT_CPi" version="24.1.0" type="device">
+  <diagram name="compile-boot-run" id="B1QgA41x7umtjb8jT5aA">
+    <mxGraphModel dx="1418" dy="820" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-1" target="VCimaqhqwFbfc0eMYyk4-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-1" value="App" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="383" y="193" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-2" target="VCimaqhqwFbfc0eMYyk4-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-2" target="VCimaqhqwFbfc0eMYyk4-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-2" value="axstd" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="383" y="356" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-12" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-3" target="VCimaqhqwFbfc0eMYyk4-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-3" value="axfeat" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="247" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-13" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-4" target="VCimaqhqwFbfc0eMYyk4-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-4" value="arceos_api" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="496" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-5" target="VCimaqhqwFbfc0eMYyk4-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-5" value="axruntime" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="383" y="644" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-6" value="axhal" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="383" y="807" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-7" value="compile dependencies" style="shape=singleArrow;direction=south;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="97" y="193" width="65" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-8" value="booting" style="shape=singleArrow;direction=north;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="729" y="186" width="60" height="675" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-15" value="1.rust_main&lt;div&gt;2.打印出axhal中所有的phaddr_regions&lt;/div&gt;&lt;div&gt;3.初始化globalallocator的起始地址为_ekernel, size为_ekernel到最大物理地址结束&lt;/div&gt;&lt;div&gt;4.创建kernel虚拟地址空间，恒等映射axhal中的所有region到地址空间，将新的虚拟空间的page table(3级)root写入到satp寄存器，覆盖axhal中boot时的粗糙版BOOT_PT_SV39&lt;/div&gt;&lt;div&gt;5.其它初始化&lt;/div&gt;&lt;div&gt;6.调用App中的main函数&lt;/div&gt;&lt;div&gt;7.App main&amp;nbsp;函数退出的后续处理&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="803" y="602" width="536" height="127" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-16" value="1. linker.lds.S确定elf物理内存布局&lt;div&gt;2.入口函数_start在platfrom/riscv64_qemu_virt/boot.rs中,&amp;nbsp;初始化完成后调axruntime的rust_main&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="798" y="807" width="459" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-17" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1.025;exitY=0.4;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-5" target="VCimaqhqwFbfc0eMYyk4-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="835" y="646" as="sourcePoint" />
+            <mxPoint x="885" y="596" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VCimaqhqwFbfc0eMYyk4-18" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="VCimaqhqwFbfc0eMYyk4-6" target="VCimaqhqwFbfc0eMYyk4-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="516" y="678" as="sourcePoint" />
+            <mxPoint x="813" y="676" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

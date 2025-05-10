@@ -150,3 +150,5 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
   axruntime::init_allocator -> axalloc::global_init
   axmm::init_memory-management -> axmm::new_kernel_space() -> axmm::AddrSpace::new_empty() -> page_table_multiarch::riscv::Sv39PageTable<PagingHandlerImpl>::try_new() -> page_table_multiarch::riscv::Sv39PageTable<PagingHandlerImpl>::alloc_table() -> PagingHandlerImpl::alloc_frame() -> global_alloctor().alloc_pages(1,PAGE_SIZE_4K)
   ```
+- 完成exercise 3: bump allocator
+  - 参考了现有的allocator中的写法,key points:1.四个位置指针，2. allocate时的alignment处理和overlap检查, 3.由于是连续的分配，目前不支持dealloc，足以通过ci了
