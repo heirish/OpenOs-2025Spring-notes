@@ -166,7 +166,7 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
 - arceos中的irq开启位置: APP:axstd["sched_cfs"] -> axstd:axfeat["sched_cfs"] -> axfeat中的sched_fs声明`sched_cfs = ["axtask/sched_cfs", "irq"]`,因此只要在APP中声明了feature shced_cfs,根据依赖关系，会在axfeat中开启irq feature
 ### 2025.05.10 unikernel基础与框架 块设备與文件系統 
 - 在執行docker run時添加上`--privileged`選項，否則在`mount disk.img ./mnt`時會報錯"no such file or directory", 使tour/u_8_0的執行失敗。
-### 2025.05.12 monolithic kernel
+### 2025.05.12 monolithic kernel - userpsace
 - 完成examples/shell练习
 - monolithic kernel
   ![](images/monolithic-kernel.png)
@@ -185,3 +185,8 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
   - U特权级到M特权级的切换通过ecall
   - 在内核态完成用户app的环境准备(uspace,memorting mappting, task create),然后在modules/axhal/src/arch/riscv/context.rs的enter_uspace中完成到用户态的切换。开始运行用户程序。
   - 用户程序中的syscall调用时会触发trap再到内核态，然后内核态调用注册的syscall handler进行处理
+### 2025.05.13 monolithic kernel - userspace
+![](images/monolithic-kernel-uspace.png)
+![](images/monolithic-kernel-uspace-mset.png)
+![](images/monolithic-kernel-uspace-backend.png)
+- 在populating设置为false时，为on-demand方式做内存映射，即刚开始只做一个空映射(PADDR值为0)到PT,然后在MMUI做地址翻译时产生PAGEFault, 在PAGEFault的异常处理函数中实际去申请物理页并更新到对应虚拟地址的PTE.代码在modules/axmm/src/backend/alloc.rs的函数map_alloc中，当populate为false时，pt.map_region传入的get_paddr函数为`|_| 0.into()`, 通过这个get_paddr得到的物理地址始终为0.
