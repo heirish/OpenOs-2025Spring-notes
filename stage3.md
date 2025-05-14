@@ -190,3 +190,18 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
 ![](images/monolithic-kernel-uspace-mset.png)
 ![](images/monolithic-kernel-uspace-backend.png)
 - 在populating设置为false时，为on-demand方式做内存映射，即刚开始只做一个空映射(PADDR值为0)到PT,然后在MMUI做地址翻译时产生PAGEFault, 在PAGEFault的异常处理函数中实际去申请物理页并更新到对应虚拟地址的PTE.代码在modules/axmm/src/backend/alloc.rs的函数map_alloc中，当populate为false时，pt.map_region传入的get_paddr函数为`|_| 0.into()`, 通过这个get_paddr得到的物理地址始终为0.
+
+### 2025.05.14 补ramfs_rename exercise
+- 在workspace的根Cargo.toml中指定使用本地的axfs_ramfs而非远程crate.io中的
+- 在本地axfs_ramfs的dir.rs中实现rename
+- examples/shell中没有修改ramfs代码就能实现，是因为examples/shell中实际用的是fatfs.因为在modules/axfs中默认是开启除myfs之外的所有fs feature,因此在axfs的lib.rs init_filesystem -> root.rs init_rootfs中做文件系统初始化时实际是创建了fatfs,可以对比一下examples/shell与exercises/ramfs_rename的Cargo.toml
+   ```
+   ####examples/shell
+   [features]
+   use-ramfs = ["axstd/myfs", "dep:axfs_vfs", "dep:axfs_ramfs", "dep:crate_interface"]
+   default = []
+
+   ###exercises/ramfs_rename
+   [features]
+   default = ["axstd/myfs", "dep:axfs_vfs", "dep:axfs_ramfs", "dep:crate_interface"]
+   ```
