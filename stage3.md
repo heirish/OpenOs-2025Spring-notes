@@ -205,3 +205,10 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
    [features]
    default = ["axstd/myfs", "dep:axfs_vfs", "dep:axfs_ramfs", "dep:crate_interface"]
    ```
+### 2025.05.15 hypervisor
+![](images/hypervisor-simple.png)
+![](images/hypervisor-riscv-previlege.png)
+![](images/hypervisor-riscv-reg.png)
+![](images/hypervisor-riscv-ISA.png)
+![](images/hypervisor-riscv-reg-hstatus.png)
+![](images/hypervisor-riscv-reg-sstatus.png)
