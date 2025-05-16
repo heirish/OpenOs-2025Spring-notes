@@ -212,3 +212,10 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
 ![](images/hypervisor-riscv-ISA.png)
 ![](images/hypervisor-riscv-reg-hstatus.png)
 ![](images/hypervisor-riscv-reg-sstatus.png)
+### 2025.05.15 完成hypervisor exercise simple-hv
+主要理解关键点'
+- 指令引发异常后， 会调用_guest_exit, 是通过设置stvec设置trap处理入口地址为_guest_exit , _guest_exit执行完成后就返回到_run_guest的返回地址，执行一下条指令，即vmexit_handler.
+- 如何切换回VM执行下一条指令:prepare context, invoke _run_guest, 要注意设置sepc的值来正确跳到下一条指令
+  - 查看指令地址:`riscv64-linux-musl-objdump  -D arceos/target/riscv64gc-unknown-none-elf/release/skernel2`
+- hypervisor的main中是一个while循环一直跑run_guest直到返回为true.
+- 需要在前两次trap发生成设置下一次_run_guest的执行环境以及A0，A1的值
