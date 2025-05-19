@@ -219,3 +219,10 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
   - 查看指令地址:`riscv64-linux-musl-objdump  -D arceos/target/riscv64gc-unknown-none-elf/release/skernel2`
 - hypervisor的main中是一个while循环一直跑run_guest直到返回为true.
 - 需要在前两次trap发生成设置下一次_run_guest的执行环境以及A0，A1的值
+### 2025.05.19 学习第8节课hypervisor地址空间管理
+![](images/hypervisor-memspace.png)
+![](images/hypervisor-riscv-support-guestmem.png)
+![](images/hypervisor-guest-switch.png)
+![](images/hypervisor-runguest.png)
+![](images/hypervisor-exitguest.png)
+- 完成课后练习:改为emulator-mode,在运行(make run)之前准备pflash_back.txt文件，内容为pfld, 代码中在NestedPageFault处理时映射pflash地址，并读pflash_back.txt内容写入映射的内存地址。
