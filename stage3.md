@@ -225,4 +225,11 @@ RISC-V 64处理器在地址转换过程中，只要表项中的 V 为 1 且 R/W/
 ![](images/hypervisor-guest-switch.png)
 ![](images/hypervisor-runguest.png)
 ![](images/hypervisor-exitguest.png)
+![](images/hypervisor-memmap.png)
 - 完成课后练习:改为emulator-mode,在运行(make run)之前准备pflash_back.txt文件，内容为pfld, 代码中在NestedPageFault处理时映射pflash地址，并读pflash_back.txt内容写入映射的内存地址。
+### 2025.05.20 学习第9节 时钟中断
+- 抢占式调度算法依赖于时钟中断。
+![](images/cfs-timer.png)
+![](images/hypervisor-hvip.png)
+![](images/hypervisor-timer-irq.png)
+h_3_0练习hypervisor自身在启动时也enable了irq, multitask feature,并注册了timer irq handler.因此在guestOS调用SetTimer之前，所有的timer interrruptions都是由hypervisor自身的handler处理的。在guest OS调用SetTimer时，禁用guest时钟中断，开启hypervisor时钟中断。当定时器触发中断时，hypervisor会进入handler处理流程？同时guest会进入vm_exit触发vmexit_handler,禁用hypervisor时钟中断并将中断注入guest，触发guest的timer interrupt handler流程。
